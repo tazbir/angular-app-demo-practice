@@ -15,7 +15,7 @@ namespace Angular_JS.Data.Services
 
         public Book GetBookById(int id)
         {
-            throw new NotImplementedException();
+            return Data.Books.FirstOrDefault(n => n.Id == id);
         }
 
         public void UpdateBook(int id, Book newBookObj)
@@ -30,7 +30,8 @@ namespace Angular_JS.Data.Services
 
         public void DeleteBook(int id)
         {
-            throw new NotImplementedException();
+            var book = Data.Books.FirstOrDefault(n => n.Id==id);
+            Data.Books.Remove(book);
         }
 
         public void AddBook(Book newBook)

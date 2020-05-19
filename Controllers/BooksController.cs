@@ -36,11 +36,28 @@ namespace Angular_JS.Controllers
             return Ok(allBooks);
         }
 
+        //Read all books
+        [HttpGet("singleBook/{id}")]
+        public IActionResult GetBookById(int id)
+        {
+            var singleBook = _bookService.GetBookById(id);
+            return Ok(singleBook);
+        }
+
         //update an existing book
         [HttpPut("UpdateBook/{id}")]
         public IActionResult UpdateBook(int id, [FromBody]Book bookObj)
         {
             _bookService.UpdateBook(id,bookObj);
+            return Ok(bookObj);
+        }
+
+        //delete a book
+        [HttpDelete("DeleteBook/{id}")]
+        public IActionResult DeleteBook(int id)
+        {
+            _bookService.DeleteBook(id);
+            return Ok();
         }
     }
 }
