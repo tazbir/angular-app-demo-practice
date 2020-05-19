@@ -6,7 +6,7 @@ namespace Angular_JS.Data
 {
     public static class Data
     {
-        public static List<Book> Books { get; } = new List<Book>
+        public static List<Book> Books { get; set; } = new List<Book>
         {
             new Book
             {

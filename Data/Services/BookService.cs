@@ -10,7 +10,7 @@ namespace Angular_JS.Data.Services
     {
         public List<Book> GetAllBooks()
         {
-            throw new NotImplementedException();
+           return Data.Books;
         }
 
         public Book GetBookById(int id)
@@ -20,7 +20,12 @@ namespace Angular_JS.Data.Services
 
         public void UpdateBook(int id, Book newBookObj)
         {
-            throw new NotImplementedException();
+            var oldBook = Data.Books.FirstOrDefault(n => n.Id == id);
+            if (oldBook != null)
+            {
+                oldBook = newBookObj;
+            }
+
         }
 
         public void DeleteBook(int id)
@@ -30,7 +35,7 @@ namespace Angular_JS.Data.Services
 
         public void AddBook(Book newBook)
         {
-            throw new NotImplementedException();
+            Data.Books.Add(newBook);
         }
     }
 }
