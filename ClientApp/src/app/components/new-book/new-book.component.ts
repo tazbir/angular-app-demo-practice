@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { BookService } from "../../services/book.service";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-new-book',
@@ -7,9 +11,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewBookComponent implements OnInit {
 
-  constructor() { }
+  addBookForm: FormGroup;
+
+  constructor(private service: BookService, private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit() {
+    this.addBookForm = this.formBuilder.group({
+      id: [Math.floor(Math.random() * 1000)],
+      title: [null, Validators.required],
+      author: [null, Validators.required],
+      description: [null, Validators.compose([Validators.required, Validators.minLength(30)])],
+      rate: [null],
+      dateStart: [null],
+      dateRead: [null]
+    });
+  }
+
+  onSubmit() {
+    this.service.addBook(this.addBookForm.value).subscribe(data => {
+      this.router.navigate(["/books"]);
+    });
   }
 
 }

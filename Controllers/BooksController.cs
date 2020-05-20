@@ -25,7 +25,7 @@ namespace Angular_JS.Controllers
         public IActionResult AddBook([FromBody] Book book)
         {
             _bookService.AddBook(book);
-            return Ok("Added");
+            return Ok();
         }
 
         //Read all books
