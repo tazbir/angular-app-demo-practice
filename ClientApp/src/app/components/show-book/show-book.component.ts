@@ -15,7 +15,7 @@ export class ShowBookComponent implements OnInit {
   ngOnInit() {
     this.service.getBookById(this.route.snapshot.params.id).subscribe(data => {
       this.book = data;
-    })
+    });
   }
 
 }
