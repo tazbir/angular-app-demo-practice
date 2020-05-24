@@ -25,6 +25,8 @@
     <td>{{book.DateRead?"Read": book.dateStart?"In progress": "Not Started"}}</td>
     <td>
       <button type="button" class="btn btn-default btn-sm" (click)="showBook(book.id)">Show</button>
+      <button type="button" class="btn btn-danger btn-sm" (click)="deleteBook(book.id)">Delete</button>
+      <button type="button" class="btn btn-success btn-sm" (click)="updateBook(book.id)">Update</button>
     </td>
   </tr>
   </tbody>
