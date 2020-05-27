@@ -21,3 +21,9 @@ to install bootstrap I used:
 	\Angular JS>npm install --save bootstrap
 	
 and imported it from my style.css
+
+
+to install ngrx modules:
+
+go to => \Angular JS\ClientApp>
+and run: npm install @ngrx/core @ngrx/effects @ngrx/store --save
