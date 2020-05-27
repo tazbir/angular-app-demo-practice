@@ -1,5 +1,5 @@
 <div class="update-book">
-  <form [formGroup]="updateBookForm" (ngSubmit)="onSubmit()">
+  <form *ngIf="updateBookForm" [formGroup]="updateBookForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="title" class="required">Title</label>
       <input type="text" class="form-control" id="title" formControlName="title" placeholder="Book title">

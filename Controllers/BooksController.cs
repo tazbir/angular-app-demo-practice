@@ -24,8 +24,22 @@ namespace Angular_JS.Controllers
         [HttpPost("AddBook")]
         public IActionResult AddBook([FromBody] Book book)
         {
-            _bookService.AddBook(book);
-            return Ok();
+            try
+            {
+                if (book.Author != null && book.Title != null && book.Description != null)
+                {
+                    _bookService.AddBook(book);
+                    return Ok();
+                }
+
+                return BadRequest("Book was not added");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+
         }
 
         //Read all books
@@ -46,9 +60,9 @@ namespace Angular_JS.Controllers
 
         //update an existing book
         [HttpPut("UpdateBook/{id}")]
-        public IActionResult UpdateBook(int id, [FromBody]Book bookObj)
+        public IActionResult UpdateBook(int id, [FromBody] Book bookObj)
         {
-            _bookService.UpdateBook(id,bookObj);
+            _bookService.UpdateBook(id, bookObj);
             return Ok(bookObj);
         }
 
